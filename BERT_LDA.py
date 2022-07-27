@@ -32,4 +32,4 @@ import nltk
 
 df = pd.read_csv('../monthly/post_201903.csv')
 
-print(df.head())
+print(df.shape())

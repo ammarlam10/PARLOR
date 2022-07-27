@@ -2,6 +2,8 @@ import numpy as np # linear algebra
 import os
 import json
 import pandas as pd
+
+'''
 from tqdm import tqdm
 import numpy as np
 from nltk.corpus import wordnet
@@ -26,3 +28,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 import nltk
+'''
+
+df = pd.read_csv('monthly/post_201903.csv')
+
+print(df.head())

@@ -28,6 +28,18 @@ from mpl_toolkits.mplot3d import Axes3D
 
 import nltk
 
-df = pd.read_csv('../monthly/post_201903.csv')
 
-print(df.shape)
+from collections import Counter
+from sklearn.metrics import silhouette_score
+import umap
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+from gensim.models.coherencemodel import CoherenceModel
+import numpy as np
+import os
+
+
+
+meta = pd.read_csv('../monthly/post_201903.csv')
+
+print(meta.shape)

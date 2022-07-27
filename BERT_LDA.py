@@ -3,13 +3,13 @@ import os
 import json
 import pandas as pd
 
-'''
 from tqdm import tqdm
 import numpy as np
 from nltk.corpus import wordnet
 import re
 import matplotlib.pyplot as plt
 from nltk.corpus import stopwords 
+'''
 
 import gensim
 from gensim.utils import simple_preprocess
@@ -30,6 +30,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import nltk
 '''
 
-df = pd.read_csv('../monthly/post_202003.csv')
+df = pd.read_csv('../monthly/post_201903.csv')
 
 print(df.shape)

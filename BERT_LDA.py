@@ -413,7 +413,7 @@ import numpy as np
 from datetime import datetime
 
 
-def preprocess(docs, samp_size=df.shape[0]//2):
+def preprocess(docs, samp_size=None):
     """
     Preprocess the data
     """

@@ -45,7 +45,7 @@ from nltk.tokenize import word_tokenize
 # from language_detector import detect_language
 
 
-meta = pd.read_csv('../monthly/post_201903.csv')
+meta = pd.read_csv('../monthly/post_202003.csv')
 
 print(meta.shape)
 
@@ -155,7 +155,7 @@ def get_wordcloud(model, token_lists, topic):
     dr = '../{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
-    plt.savefig('../' + '/Topic' + str(topic) + '_wordcloud')
+    plt.savefig('../' + '/Topic/' + str(topic) + '_wordcloud')
     print('Getting wordcloud for topic {}. Done!'.format(topic))
 
 

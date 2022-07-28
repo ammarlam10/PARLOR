@@ -413,7 +413,7 @@ import numpy as np
 from datetime import datetime
 
 
-def preprocess(docs, samp_size=None):
+def preprocess(docs, samp_size=None ):
     """
     Preprocess the data
     """
@@ -640,3 +640,5 @@ def main():
     for i in range(tm.k):
         get_wordcloud(tm, token_lists, i)
         
+
+main()

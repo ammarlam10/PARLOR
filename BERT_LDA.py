@@ -622,7 +622,7 @@ def main():
 
     data = documents['body'] #pd.read_csv('/kaggle/working/train.csv')
     data = data.fillna('')  # only the comments has NaN's
-    rws = data.abstract
+    rws = data.body
     sentences, token_lists, idx_in = preprocess(rws, samp_size=samp_size)
     # Define the topic model object
     #tm = Topic_Model(k = 10), method = TFIDF)

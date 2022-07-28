@@ -329,8 +329,8 @@ def preprocess_sent(rw):
     :return: sentence level pre-processed review
     """
     s = f_base(rw)
-    if not f_lan(s):
-        return None
+#    if not f_lan(s):
+#        return None
     return s
 
 

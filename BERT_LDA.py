@@ -45,7 +45,7 @@ from nltk.tokenize import word_tokenize
 # from language_detector import detect_language
 
 
-meta = pd.read_csv('../monthly/post_202003.csv')
+meta = pd.read_csv('../monthly/comment_202002.csv')
 
 print(meta.shape)
 

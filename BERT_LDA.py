@@ -519,7 +519,8 @@ class Topic_Model:
 
             print('Getting vector representations for BERT ...')
             from sentence_transformers import SentenceTransformer
-            model = SentenceTransformer('bert-base-nli-max-tokens')
+            #all-mpnet-base-v2
+            model = SentenceTransformer('all-mpnet-base-v2')
             vec = np.array(model.encode(sentences, show_progress_bar=True))
             print('Getting vector representations for BERT. Done!')
             return vec

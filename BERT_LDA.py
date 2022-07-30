@@ -49,7 +49,7 @@ meta = pd.read_csv('../monthly/comment_202006.csv')
 
 print(meta.shape)
 
-documents = meta.sample(frac=0.5)
+documents = meta
 
 
 def get_topic_words(token_lists, labels, k=None):

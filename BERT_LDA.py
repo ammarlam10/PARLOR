@@ -51,6 +51,8 @@ meta1 = pd.read_csv('../monthly/post_202006.csv')
 
 fin = pd.concat([meta,meta1])
 
+fin = fin.sample(frac=0.5)
+
 fin.reset_index(inplace=True)
 
 print(fin.shape)

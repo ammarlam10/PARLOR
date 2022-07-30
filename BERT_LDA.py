@@ -54,7 +54,7 @@ fin = pd.concat([meta,meta1])
 print(fin.shape)
 
 
-fin = fin.sample(frac=0.5)
+fin = fin.sample(frac=0.25)
 
 fin.reset_index(inplace=True)
 

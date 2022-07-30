@@ -45,11 +45,11 @@ from nltk.tokenize import word_tokenize
 # from language_detector import detect_language
 
 
-meta = pd.read_csv('../monthly/comment_202002.csv')
+meta = pd.read_csv('../monthly/comment_202006.csv')
 
 print(meta.shape)
 
-documents = meta
+documents = meta.sample(frac=0.5)
 
 
 def get_topic_words(token_lists, labels, k=None):

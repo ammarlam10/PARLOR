@@ -47,9 +47,15 @@ from nltk.tokenize import word_tokenize
 
 meta = pd.read_csv('../monthly/comment_202006.csv')
 
-print(meta.shape)
+meta1 = pd.read_csv('../monthly/post_202006.csv')
 
-documents = meta
+fin = pd.concat([meta,meta1])
+
+fin.reset_index(inplace=True)
+
+print(fin.shape)
+
+documents = fin
 
 
 def get_topic_words(token_lists, labels, k=None):

@@ -45,22 +45,9 @@ from nltk.tokenize import word_tokenize
 # from language_detector import detect_language
 
 
-meta = pd.read_csv('../monthly/comment_202006.csv')
-
-meta1 = pd.read_csv('../monthly/post_202006.csv')
-
-fin = pd.concat([meta,meta1])
-
-print(fin.shape)
+fraction = 0.25
 
 
-fin = fin.sample(frac=0.25)
-
-fin.reset_index(inplace=True)
-
-print(fin.shape)
-
-documents = fin
 
 
 def get_topic_words(token_lists, labels, k=None):
@@ -142,7 +129,7 @@ def visualize(model):
         os.makedirs(dr)
     plt.savefig('../2D_vis')
 
-def get_wordcloud(model, token_lists, topic):
+def get_wordcloud(model, token_lists, topic,fil):
     """
     Get word cloud of each topic from fitted model
     :param model: Topic_Model object
@@ -166,7 +153,7 @@ def get_wordcloud(model, token_lists, topic):
     dr = '../{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
-    plt.savefig('../' + '/Topic/' + str(topic) + '_wordcloud')
+    plt.savefig('../' + '/Topic/'+ '/{}/'.format(fil)+ str(topic) + '_wordcloud')
     print('Getting wordcloud for topic {}. Done!'.format(topic))
 
 
@@ -622,35 +609,59 @@ def main():
     method = "LDA_BERT"
     samp_size = documents.shape[0]//2
     ntopic = 10
-    
-    #parser = argparse.ArgumentParser(description='contextual_topic_identification tm_test:1.0')
 
-    #parser.add_argument('--fpath', default='/kaggle/working/train.csv')
-    #parser.add_argument('--ntopic', default=10,)
-    #parser.add_argument('--method', default='TFIDF')
-    #parser.add_argument('--samp_size', default=20500)
-    
-    #args = parser.parse_args()
 
-    data = documents['body'] #pd.read_csv('/kaggle/working/train.csv')
-    data = data.fillna('')  # only the comments has NaN's
-    rws = data
-    sentences, token_lists, idx_in = preprocess(rws, samp_size=samp_size)
-    # Define the topic model object
-    #tm = Topic_Model(k = 10), method = TFIDF)
-    tm = Topic_Model(k = ntopic, method = method)
-    # Fit the topic model by chosen method
-    tm.fit(sentences, token_lists)
-    # Evaluate using metrics
-    with open("../monthly/comment_{}.file".format(tm.id), "wb") as f:
-        pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
+    onlyfiles = ['201901.csv','201902.csv','201903.csv','201904.csv',
+            '201905.csv','201906.csv','201907.csv','201908.csv','201909.csv','201910.csv']
 
-    print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
-    print('Silhouette Score:', get_silhouette(tm))
-    # visualize and save img
-    visualize(tm)
-    for i in range(tm.k):
-        get_wordcloud(tm, token_lists, i)
+
+    for fil in onlyfiles:
+        meta = pd.read_csv('../monthly/comment_{}.csv'.format(fil))
+
+        meta1 = pd.read_csv('../monthly/post_{}.csv'.format(fil))
+
+        fin = pd.concat([meta,meta1])
+
+        print(fin.shape)
+
+
+        fin = fin.sample(frac=fraction)
+
+        fin.reset_index(inplace=True)
+
+        print(fin.shape)
+
+        documents = fin
+
+        
+        #parser = argparse.ArgumentParser(description='contextual_topic_identification tm_test:1.0')
+
+        #parser.add_argument('--fpath', default='/kaggle/working/train.csv')
+        #parser.add_argument('--ntopic', default=10,)
+        #parser.add_argument('--method', default='TFIDF')
+        #parser.add_argument('--samp_size', default=20500)
+        
+        #args = parser.parse_args()
+
+        data = documents['body'] #pd.read_csv('/kaggle/working/train.csv')
+        data = data.fillna('')  # only the comments has NaN's
+        rws = data
+        sentences, token_lists, idx_in = preprocess(rws, samp_size=samp_size)
+        # Define the topic model object
+        #tm = Topic_Model(k = 10), method = TFIDF)
+        tm = Topic_Model(k = ntopic, method = method)
+        # Fit the topic model by chosen method
+        tm.fit(sentences, token_lists)
+        # Evaluate using metrics
+        with open("../monthly/comment_{}.file".format(tm.id), "wb") as f:
+            pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
+
+        print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
+        print('Silhouette Score:', get_silhouette(tm))
+        # visualize and save img
+        visualize(tm)
+        for i in range(tm.k):
+            get_wordcloud(tm, token_lists, i,fil)
         
 
 main()

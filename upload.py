@@ -1,12 +1,36 @@
-#import pandas as pd
 
-from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-
-
-upload_file_list = ['comment_202002.csv', 'post_201912.csv']
-for upload_file in upload_file_list:
-	gfile = GoogleDrive.CreateFile({'parents': [{'id': '1dZXmRPPr6Z8C9OqixmLxW-pcMIW4p7FA'}]})
-	# Read file and set it as the content of this instance.
-	gfile.SetContentFile(upload_file)
-	gfile.Upload() # Upload the file.
+from pydrive.auth import GoogleAuth
+   
+# For using listdir()
+import os
+   
+  
+# Below code does the authentication
+# part of the code
+gauth = GoogleAuth()
+  
+# Creates local webserver and auto
+# handles authentication.
+gauth.LocalWebserverAuth()       
+drive = GoogleDrive(gauth)
+   
+# replace the value of this variable
+# with the absolute path of the directory
+path = r"../monthly/post_201912.csv"   
+   
+# iterating thought all the files/folder
+# of the desired directory
+for x in os.listdir(path):
+   
+    f = drive.CreateFile({'title': x})
+    f.SetContentFile(os.path.join(path, x))
+    f.Upload()
+  
+    # Due to a known bug in pydrive if we 
+    # don't empty the variable used to
+    # upload the files to Google Drive the
+    # file stays open in memory and causes a
+    # memory leak, therefore preventing its 
+    # deletion
+    f = None

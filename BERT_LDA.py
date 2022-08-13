@@ -618,9 +618,9 @@ def main():
 
     for fil in onlyfiles:
         print(fil)
-        meta = pd.read_csv('../monthly/comment_{}.csv'.format(fil))
+        meta = pd.read_csv('../monthly/comment_{}'.format(fil))
 
-        meta1 = pd.read_csv('../monthly/post_{}.csv'.format(fil))
+        meta1 = pd.read_csv('../monthly/post_{}'.format(fil))
 
         fin = pd.concat([meta,meta1])
 

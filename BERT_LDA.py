@@ -613,8 +613,8 @@ def main():
     
 
 # '201901.csv','201902.csv',
-    onlyfiles = ['201903.csv','201904.csv',
-            '201905.csv','201906.csv','201907.csv','201908.csv','201909.csv','201910.csv']
+# '201903.csv','201904.csv',      '201905.csv',
+    onlyfiles = ['201906.csv','201907.csv','201908.csv','201909.csv','201910.csv']
 
 
     for fil in onlyfiles:
@@ -659,11 +659,15 @@ def main():
         # Fit the topic model by chosen method
         tm.fit(sentences, token_lists)
         # Evaluate using metrics
-        with open("../monthly/comment_{}.file".format(tm.id), "wb") as f:
+        with open("../monthly/{}_{}.file".format(fil,tm.id), "wb") as f:
             pickle.dump(tm, f, pickle.HIGHEST_PROTOCOL)
 
         print('Coherence:', get_coherence(tm, token_lists, 'c_v'))
         print('Silhouette Score:', get_silhouette(tm))
+
+        with open('{}.txt'.format(fil), 'w') as f:
+            f.write('Coherence:', get_coherence(tm, token_lists, 'c_v'))
+            f.write('Silhouette Score:', get_silhouette(tm))
         # visualize and save img
         visualize(tm)
         for i in range(tm.k):

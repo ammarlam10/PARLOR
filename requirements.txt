@@ -12,3 +12,5 @@ wordcloud
 stop_words
 tensorflow
 keras
+sentence-transformers
+umap-learn

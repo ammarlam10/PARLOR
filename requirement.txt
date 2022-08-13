@@ -1,0 +1,13 @@
+numpy# linear algebra
+pandas
+tqdm
+numpy
+nltk
+re
+matplotlib
+gensim
+sklearn
+seabor
+umap
+wordcloud
+stop_words

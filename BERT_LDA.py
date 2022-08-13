@@ -31,7 +31,7 @@ import nltk
 
 from collections import Counter
 from sklearn.metrics import silhouette_score
-import umap
+import umap.umap_ as umap
 from wordcloud import WordCloud
 from gensim.models.coherencemodel import CoherenceModel
 

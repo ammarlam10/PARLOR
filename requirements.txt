@@ -1,4 +1,4 @@
-numpy# linear algebra
+numpy
 pandas
 tqdm
 numpy

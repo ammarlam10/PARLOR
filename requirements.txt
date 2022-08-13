@@ -11,4 +11,3 @@ umap
 wordcloud
 stop_words
 keras
-pickle

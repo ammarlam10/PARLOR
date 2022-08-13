@@ -1,13 +1,12 @@
 numpy
 pandas
 tqdm
-numpy
+numpy==1.22
 nltk
 matplotlib
 gensim
 sklearn
 seaborn
-umap
 wordcloud
 stop_words
 tensorflow

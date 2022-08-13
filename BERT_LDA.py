@@ -182,7 +182,7 @@ def get_wordcloud(model, token_lists, topic,fil):
     dr = '../{}/{}'.format(model.method, model.id)
     if not os.path.exists(dr):
         os.makedirs(dr)
-    plt.savefig('../' + '/Topic/'+ '/{}/'.format(fil)+ str(topic) + '_wordcloud')
+    plt.savefig('..' + '/Topic/'+ '{}/'.format(fil[:6])+ str(topic) + '_wordcloud')
     print('Getting wordcloud for topic {}. Done!'.format(topic))
 
 

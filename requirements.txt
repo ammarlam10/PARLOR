@@ -3,7 +3,6 @@ pandas
 tqdm
 numpy
 nltk
-re
 matplotlib
 gensim
 sklearn

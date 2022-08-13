@@ -45,6 +45,35 @@ from nltk.tokenize import word_tokenize
 # from language_detector import detect_language
 
 
+import keras
+from keras.layers import Input, Dense
+from keras.models import Model
+from sklearn.model_selection import train_test_split
+import warnings
+warnings.filterwarnings('ignore')
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import KMeans
+from gensim import corpora
+import gensim
+import numpy as np
+#from Autoencoder import *
+#from preprocess import *
+from datetime import datetime
+
+
+import pandas as pd
+import pickle
+import matplotlib.pyplot as plt
+
+import warnings
+warnings.filterwarnings('ignore', category=Warning)
+
+import argparse
+
+
+
+
 fraction = 0.25
 
 
@@ -351,12 +380,6 @@ def preprocess_word(s):
     return w_list
 
 
-import keras
-from keras.layers import Input, Dense
-from keras.models import Model
-from sklearn.model_selection import train_test_split
-import warnings
-warnings.filterwarnings('ignore')
 
 
 
@@ -399,16 +422,6 @@ class Autoencoder:
                                         batch_size=128,
                                         shuffle=True,
                                         validation_data=(X_test, X_test), verbose=0)
-
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.cluster import KMeans
-from gensim import corpora
-import gensim
-import numpy as np
-#from Autoencoder import *
-#from preprocess import *
-from datetime import datetime
 
 
 def preprocess(docs, samp_size=None ):
@@ -592,23 +605,11 @@ class Topic_Model:
 #from model import *
 #from utils import *
 
-import pandas as pd
-import pickle
-import matplotlib.pyplot as plt
-
-import warnings
-warnings.filterwarnings('ignore', category=Warning)
-
-import argparse
-
 #def model(): #:if __name__ == '__main__':
 
 def main():
     
     
-    method = "LDA_BERT"
-    samp_size = documents.shape[0]//2
-    ntopic = 10
 
 
     onlyfiles = ['201901.csv','201902.csv','201903.csv','201904.csv',
@@ -634,7 +635,10 @@ def main():
 
         documents = fin
 
-        
+        method = "LDA_BERT"
+        samp_size = documents.shape[0]//2
+        ntopic = 10
+
         #parser = argparse.ArgumentParser(description='contextual_topic_identification tm_test:1.0')
 
         #parser.add_argument('--fpath', default='/kaggle/working/train.csv')

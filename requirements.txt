@@ -10,4 +10,5 @@ seaborn
 umap
 wordcloud
 stop_words
+tensorflow
 keras

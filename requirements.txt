@@ -6,7 +6,7 @@ nltk
 matplotlib
 gensim
 sklearn
-seabor
+seaborn
 umap
 wordcloud
 stop_words

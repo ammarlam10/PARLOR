@@ -71,6 +71,7 @@ warnings.filterwarnings('ignore', category=Warning)
 
 import argparse
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 
@@ -611,8 +612,8 @@ def main():
     
     
 
-
-    onlyfiles = ['201901.csv','201902.csv','201903.csv','201904.csv',
+# '201901.csv','201902.csv',
+    onlyfiles = ['201903.csv','201904.csv',
             '201905.csv','201906.csv','201907.csv','201908.csv','201909.csv','201910.csv']
 
 

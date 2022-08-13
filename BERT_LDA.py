@@ -666,8 +666,8 @@ def main():
         print('Silhouette Score:', get_silhouette(tm))
 
         with open('{}.txt'.format(fil), 'w') as f:
-            f.write('Coherence:', get_coherence(tm, token_lists, 'c_v'))
-            f.write('Silhouette Score:', get_silhouette(tm))
+            f.write('Coherence:{}'.format( get_coherence(tm, token_lists, 'c_v')))
+            f.write('Silhouette Score:{}'.format(get_silhouette(tm)))
         # visualize and save img
         visualize(tm)
         for i in range(tm.k):

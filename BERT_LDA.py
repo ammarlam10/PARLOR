@@ -75,7 +75,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 
-fraction = 0.25
+fraction = 0.1
 
 
 
@@ -614,7 +614,9 @@ def main():
 
 # '201901.csv','201902.csv',
 # '201903.csv','201904.csv',      '201905.csv',
-    onlyfiles = ['201906.csv','201907.csv','201908.csv','201909.csv','201910.csv']
+
+#'201906.csv',
+    onlyfiles = ['201907.csv','202010.csv']
 #    onlyfiles = [01911  201912  202001  202002  202003  202004]
 
     for fil in onlyfiles:

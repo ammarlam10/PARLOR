@@ -75,7 +75,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 
-fraction = 0.75
+fraction = 0.5
 
 
 
@@ -616,14 +616,14 @@ def main():
 # '201903.csv','201904.csv',      '201905.csv',
 
 #'201906.csv',
-    onlyfiles = ['202010.csv','202011.csv']
+    onlyfiles = ['202010.csv','202011.csv','202012.csv']
 #    onlyfiles = [01911  201912  202001  202002  202003  202004]
 
     for fil in onlyfiles:
         print(fil)
-        meta = pd.read_csv('../monthly/comment_{}'.format(fil),nrows=1000000)
+        meta = pd.read_csv('/home/ra25tec2/monthly/comment_{}'.format(fil),nrows=1000000)
 
-        meta1 = pd.read_csv('../monthly/post_{}'.format(fil),nrows=1000000)
+        meta1 = pd.read_csv('/home/ra25tec2/monthly/post_{}'.format(fil),nrows=1000000)
 
         fin = pd.concat([meta,meta1])
 

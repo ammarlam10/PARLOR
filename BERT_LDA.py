@@ -75,7 +75,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 
-fraction = 0.1
+fraction = 0.75
 
 
 
@@ -616,14 +616,14 @@ def main():
 # '201903.csv','201904.csv',      '201905.csv',
 
 #'201906.csv',
-    onlyfiles = ['201907.csv','202010.csv']
+    onlyfiles = ['202010.csv','202011.csv']
 #    onlyfiles = [01911  201912  202001  202002  202003  202004]
 
     for fil in onlyfiles:
         print(fil)
-        meta = pd.read_csv('../monthly/comment_{}'.format(fil))
+        meta = pd.read_csv('../monthly/comment_{}'.format(fil),nrows=1000000)
 
-        meta1 = pd.read_csv('../monthly/post_{}'.format(fil))
+        meta1 = pd.read_csv('../monthly/post_{}'.format(fil),nrows=1000000)
 
         fin = pd.concat([meta,meta1])
 
@@ -674,6 +674,8 @@ def main():
         visualize(tm)
         for i in range(tm.k):
             get_wordcloud(tm, token_lists, i,fil)
+            with open("../topic_data/{}_{}.file".format(fil,tm.id), "wb") as f:
+                pickle.dump({'model':tm,'token':token_lists,'topic':i,'fil':fil}, f, pickle.HIGHEST_PROTOCOL)
         
 
 main()

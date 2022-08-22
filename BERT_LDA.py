@@ -75,7 +75,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 
 
-fraction = 0.5
+fraction = 0.25
 
 
 

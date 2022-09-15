@@ -1,3 +1,5 @@
+# BERT_LDA dataset from https://www.kaggle.com/code/dskswu/topic-modeling-bert-lda
+
 import numpy as np # linear algebra
 import os
 import json
